@@ -42,19 +42,17 @@ const HEROS: Hero[] = [{
 
 @Component({
     selector: 'my-app',
-    template: `
-		<h1>{{title}}</h1>
-		<div class="row">
-		<li *ngFor="let heroTemp of heroPComp">
-			<span>{{heroTemp.id}}</span>{{heroTemp.name}}
-		</li>
-<!--			<label>For {{heroPComp.name}}</label>
-			<input [(ngModel)]="heroPComp.name" placeholder="name">-->
-		</div>
-		`,
+    templateUrl: 'app/ts/heros.md.component.html'		,
 })
 export class AppComponent {
 
-    title = 'Tour of Heros';
-    heroPComp: Hero[] = HEROS;
+    title = 'Tours of Heros';
+    heroACP: Hero[] = HEROS;
+
+		selectedHeroACP: Hero;
+
+		onSelectHeroACM(hero: Hero){
+
+			this.selectedHeroACP = hero;
+		}
 }

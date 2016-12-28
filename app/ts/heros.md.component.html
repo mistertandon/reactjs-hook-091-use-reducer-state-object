@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<div class="row">
+    <li *ngFor="let heroTemp of heroACP" (click)="onSelectHeroACM(heroTemp)">
+        <span>{{heroTemp.id}}</span>{{heroTemp.name}}
+    </li>
+
+</div>
+<div class='row'>
+    <div *ngIf='selectedHeroACP'>
+        <label>For {{selectedHeroACP.name}}</label>
+        <input [(ngModel)]='selectedHeroACP.name' placeholder='name' />
+    </div>
+</div>
