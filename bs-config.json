@@ -1,0 +1,13 @@
+{
+    "_comment": "http://192.168.0.103.xip.io:9001",
+    "name": "pveh",
+    "files": ["./app/ts/*.{ts, js, html}", "./app/ts/**/*.{ts, js, html}", "./app/ts/**/**/*.{ts, js, html}"],
+    "browser": ["google-chrome"],
+    "ui": {
+        "port": 9000
+    },
+    "port": 9001,
+    "online": false,
+    "xip": false,
+    "reloadDelay": 3000
+}
