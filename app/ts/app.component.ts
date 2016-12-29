@@ -1,46 +1,13 @@
 import {
-    Component,
-    OnInit
+    Component
 } from '@angular/core';
-
-import {
-    Hero
-} from './Hero.class';
-
-import {
-    HEROS
-} from './mock-heros';
-
-import {
-    HeroService
-} from './hero.service';
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/ts/heros-master.component.html',
-    styleUrls: ['app/ts/heros-master.component.css'],
-    providers: [HeroService]
+    templateUrl: 'app/ts/app.component.html',
+    styleUrls: ['app/ts/heros-master.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-    title = 'Tours of Heros :-)';
-    heroACP: Hero[];
-    selectedHeroACP: Hero;
-
-    constructor(private heroService: HeroService) {}
-
-    getHeroesListACM(): void {
-
-        this.heroService.getHerosHSM().then(herosList => this.heroACP = herosList);
-    }
-
-    ngOnInit() {
-
-        this.getHeroesListACM();
-    }
-
-    onSelectHeroACM(hero: Hero) {
-
-        this.selectedHeroACP = hero;
-    }
+    title = 'Tours of Heros☺ ☻';
 }
