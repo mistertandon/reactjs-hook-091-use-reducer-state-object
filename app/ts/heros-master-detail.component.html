@@ -1,0 +1,21 @@
+<h1>{{title}}</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div id='heros-master-list'  class="col-lg-4">
+            <li *ngFor="let heroTemp of heroACP" (click)="onSelectHeroACM(heroTemp)" [class.selectedHero]="heroTemp === selectedHeroACP">
+                <span>{{heroTemp.id}}</span>{{heroTemp.name}}
+            </li>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class='row'>
+        <div class="col-lg-4">
+            <div *ngIf='selectedHeroACP'>
+                <label>For {{selectedHeroACP.name}}</label>
+                <input [(ngModel)]='selectedHeroACP.name' placeholder='name' />
+            </div>
+        </div>
+    </div>
+</div>

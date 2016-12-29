@@ -42,7 +42,8 @@ const HEROS: Hero[] = [{
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/ts/heros.md.component.html'		,
+    templateUrl: 'app/ts/heros-master-detail.component.html',
+		styleUrls: ['app/ts/heros-master-detail.component.css']
 })
 export class AppComponent {
 
