@@ -8,14 +8,4 @@
         </div>
     </div>
 </div>
-
-<div class="container-fluid">
-    <div class='row'>
-        <div class="col-lg-4">
-            <div *ngIf='selectedHeroACP'>
-                <label>For {{selectedHeroACP.name}}</label>
-                <input [(ngModel)]='selectedHeroACP.name' placeholder='name' />
-            </div>
-        </div>
-    </div>
-</div>
+<hero-detail [heroHDCP]="selectedHeroACP"></hero-detail>

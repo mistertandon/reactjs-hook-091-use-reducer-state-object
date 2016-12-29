@@ -11,12 +11,16 @@ import {
 } from './app.component';
 
 import {
+    HeroDetailComponent
+} from './hero-detail.component';
+
+import {
     FormsModule
 } from '@angular/forms';
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
-    declarations: [AppComponent],
+    declarations: [AppComponent, HeroDetailComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
