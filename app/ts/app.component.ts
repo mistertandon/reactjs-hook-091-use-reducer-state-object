@@ -1,55 +1,46 @@
 import {
-    Component
+    Component,
+    OnInit
 } from '@angular/core';
 
-import {Hero} from './Hero.class';
+import {
+    Hero
+} from './Hero.class';
 
-const HEROS: Hero[] = [{
-    id: 11,
-    name: 'Mr. Nice'
-}, {
-    id: 12,
-    name: 'Narco'
-}, {
-    id: 13,
-    name: 'Bombasto'
-}, {
-    id: 14,
-    name: 'Celeritas'
-}, {
-    id: 15,
-    name: 'Magneta'
-}, {
-    id: 16,
-    name: 'RubberMan'
-}, {
-    id: 17,
-    name: 'Dynama'
-}, {
-    id: 18,
-    name: 'Dr IQ'
-}, {
-    id: 19,
-    name: 'Magma'
-}, {
-    id: 20,
-    name: 'Tornado'
-}];
+import {
+    HEROS
+} from './mock-heros';
+
+import {
+    HeroService
+} from './hero.service';
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/ts/heros-master-detail.component.html',
-		styleUrls: ['app/ts/heros-master-detail.component.css']
+    templateUrl: 'app/ts/heros-master.component.html',
+    styleUrls: ['app/ts/heros-master.component.css'],
+    providers: [HeroService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    title = 'Tours of Heros';
-    heroACP: Hero[] = HEROS;
+    title = 'Tours of Heros :-)';
+    heroACP: Hero[];
+    selectedHeroACP: Hero;
 
-		selectedHeroACP: Hero;
+    constructor(private heroService: HeroService) {}
 
-		onSelectHeroACM(hero: Hero){
+    getHeroesListACM(): void {
 
-			this.selectedHeroACP = hero;
-		}
+        this.heroService.getHerosHSM().then(herosList => this.heroACP = herosList);
+    }
+
+    ngOnInit() {
+
+        this.getHeroesListACM();
+    }
+
+    onSelectHeroACM(hero: Hero) {
+
+        this.selectedHeroACP = hero;
+    }
 }
