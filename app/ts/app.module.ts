@@ -7,6 +7,10 @@ import {
 } from '@angular/platform-browser';
 
 import {
+    RouterModule
+} from '@angular/router';
+
+import {
     FormsModule
 } from '@angular/forms';
 
@@ -26,11 +30,25 @@ import {
     HeroDetailComponent
 } from './hero-detail.component';
 
-
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [AppComponent, HerosMasterComponent, HeroDetailComponent],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule.forRoot([{
+            path: 'heros',
+            component: HerosMasterComponent
+        }])
+    ],
+    declarations: [
+        AppComponent,
+        HerosMasterComponent,
+        HeroDetailComponent
+    ],
     bootstrap: [AppComponent],
     providers: [HeroService]
 })
 export class AppModule {}
+
+
+
+
