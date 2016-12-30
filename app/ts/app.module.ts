@@ -30,6 +30,10 @@ import {
     HeroDetailComponent
 } from './hero-detail.component';
 
+import {
+    DashboardComponent
+} from './dashboard.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -37,18 +41,18 @@ import {
         RouterModule.forRoot([{
             path: 'heros',
             component: HerosMasterComponent
+        }, {
+            path:  'dashboardheroes',
+            component: DashboardComponent
         }])
     ],
     declarations: [
         AppComponent,
         HerosMasterComponent,
-        HeroDetailComponent
+        HeroDetailComponent,
+        DashboardComponent
     ],
     bootstrap: [AppComponent],
     providers: [HeroService]
 })
 export class AppModule {}
-
-
-
-
