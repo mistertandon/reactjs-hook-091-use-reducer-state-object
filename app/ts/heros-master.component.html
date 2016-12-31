@@ -2,7 +2,8 @@
 <div class="row">
     <div id='heros-master-list' class="col-lg-4">
         <li *ngFor="let heroTemp of heroHMCP" (click)="onSelectHeroACM(heroTemp)" [class.selectedHero]="heroTemp === selectedHeroHMCP">
-            <span>{{heroTemp.id}}</span>{{heroTemp.name}}
+            <span>{{heroTemp.id}}</span>
+            <span>{{heroTemp.name}}</span>
         </li>
     </div>
 </div>

@@ -35,10 +35,15 @@ export class HeroDetailComponent implements OnInit {
     @Input()
     heroHDCP: Hero;
 
-    ngOnInit(): void{
+    ngOnInit(): void {
 
         this.activatedRouteHDP.params
-				.switchMap((params: Params) => this.heroServiceHDP.getHeroDetailHSM(+params['id']))
-				.subscribe((paramsT) => console.log(paramsT));
+            .switchMap((params: Params) => this.heroServiceHDP.getHeroDetailHSM(+params['id']))
+            .subscribe((heroInfo) => this.heroHDCP = heroInfo);
+    }
+
+    goBackHDCM(): void {
+
+        this.locationHDP.back();
     }
 }

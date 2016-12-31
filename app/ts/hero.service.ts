@@ -20,9 +20,6 @@ export class HeroService {
 
     getHeroDetailHSM(heroId: number): Promise < Hero > {
 
-        return Promise.resolve({
-            id: 11,
-            name: 'Mr. Nice'
-        });
+        return this.getHerosHSM().then((heroesList: Hero[]) => heroesList.find((heroInfo: Hero) => heroInfo.id === heroId));
     }
 }

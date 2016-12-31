@@ -2,9 +2,11 @@
     <div class='row'>
         <div class="col-lg-4">
             <div *ngIf='heroHDCP'>
-                <label>For {{heroHDCP.name}}</label>
+                <span>Hero Name :  {{heroHDCP.name}}</span>
+                <span>Hero id :   {{heroHDCP.id}}</span>
                 <input [(ngModel)]='heroHDCP.name' placeholder='name' />
             </div>
+            <button (click)="goBackHDCM()" type="button" class="btn btn-info">Go Back</button>
         </div>
     </div>
 </div>
