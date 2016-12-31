@@ -7,16 +7,16 @@ import {
 } from '@angular/platform-browser';
 
 import {
-    RouterModule
-} from '@angular/router';
-
-import {
     FormsModule
 } from '@angular/forms';
 
 import {
     HeroService
 } from './hero.service';
+
+import {
+    AppRoutingModule
+} from './app-routing.module';
 
 import {
     AppComponent
@@ -38,13 +38,7 @@ import {
     imports: [
         BrowserModule,
         FormsModule,
-        RouterModule.forRoot([{
-            path: 'heros',
-            component: HerosMasterComponent
-        }, {
-            path:  'dashboardheroes',
-            component: DashboardComponent
-        }])
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,

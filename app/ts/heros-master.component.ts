@@ -8,10 +8,6 @@ import {
 } from './Hero.class';
 
 import {
-    HEROS
-} from './mock-heros';
-
-import {
     HeroService
 } from './hero.service';
 
@@ -22,23 +18,23 @@ import {
 })
 export class HerosMasterComponent implements OnInit {
 
-    heroACP: Hero[];
-    selectedHeroACP: Hero;
+    heroHMCP: Hero[];
+    selectedHeroHMCP: Hero;
 
     constructor(private heroService: HeroService) {}
 
     getHeroesListACM(): void {
 
-        this.heroService.getHerosHSM().then(herosList => this.heroACP = herosList);
+        this.heroService.getHerosHSM().then(herosList => this.heroHMCP = herosList);
     }
 
-    ngOnInit() {
+        ngOnInit() {
 
         this.getHeroesListACM();
     }
 
-    onSelectHeroACM(hero: Hero) {
+        onSelectHeroACM(hero: Hero) {
 
-        this.selectedHeroACP = hero;
+        this.selectedHeroHMCP = hero;
     }
 }
