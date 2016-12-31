@@ -32,12 +32,13 @@ export class HeroDetailComponent implements OnInit {
 
     constructor(private heroServiceHDP: HeroService, private locationHDP: Location, private activatedRouteHDP: ActivatedRoute) {}
 
-
     @Input()
     heroHDCP: Hero;
 
-    ngOnInit() {
+    ngOnInit(): void{
 
-//        this.activatedRouteHDP.params.switchMap((params: Params) => console.log(params));
+        this.activatedRouteHDP.params
+				.switchMap((params: Params) => this.heroServiceHDP.getHeroDetailHSM(+params['id']))
+				.subscribe((paramsT) => console.log(paramsT));
     }
 }

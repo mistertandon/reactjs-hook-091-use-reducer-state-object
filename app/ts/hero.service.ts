@@ -17,4 +17,12 @@ export class HeroService {
 
         return Promise.resolve(HEROS);
     }
+
+    getHeroDetailHSM(heroId: number): Promise < Hero > {
+
+        return Promise.resolve({
+            id: 11,
+            name: 'Mr. Nice'
+        });
+    }
 }

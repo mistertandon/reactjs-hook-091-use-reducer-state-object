@@ -9,7 +9,10 @@
 <div class='row'>
     <div class="col-lg-4">
         <div *ngIf='selectedHeroHMCP'>
-            <label>For {{selectedHeroHMCP.name}}</label>
+            <div>
+                <h3>Selected Hero detail</h3>
+                <span>Hero Id : {{selectedHeroHMCP.id}}, Hero name : {{selectedHeroHMCP.name}}</span>
+            </div>
             <input [(ngModel)]='selectedHeroHMCP.name' placeholder='name' />
         </div>
     </div>
