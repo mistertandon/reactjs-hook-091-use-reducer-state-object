@@ -19,6 +19,10 @@ import {
     DashboardComponent
 } from './dashboard.component';
 
+import {
+    HeroFormComponent
+} from './hero-form.component';
+
 const ROUTES_CONF: Routes = [{
     path: 'heros',
     component: HerosMasterComponent
@@ -27,7 +31,10 @@ const ROUTES_CONF: Routes = [{
     component: DashboardComponent
 }, {
     path: 'herodetail/:id',
-    component:  HeroDetailComponent
+    component: HeroDetailComponent
+}, {
+    path: 'addhero',
+    component: HeroFormComponent
 }];
 
 @NgModule({

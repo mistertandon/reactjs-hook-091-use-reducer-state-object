@@ -34,6 +34,10 @@ import {
     DashboardComponent
 } from './dashboard.component';
 
+import {
+    HeroFormComponent
+} from './hero-form.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -44,7 +48,8 @@ import {
         AppComponent,
         HerosMasterComponent,
         HeroDetailComponent,
-        DashboardComponent
+        DashboardComponent,
+        HeroFormComponent
     ],
     bootstrap: [AppComponent],
     providers: [HeroService]

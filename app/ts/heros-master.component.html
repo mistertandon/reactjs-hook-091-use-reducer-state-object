@@ -1,14 +1,14 @@
-<h1>{{title}}</h1>
-<div class="row">
-    <div id='heros-master-list' class="col-lg-4">
-        <li *ngFor="let heroTemp of heroHMCP" (click)="onSelectHeroACM(heroTemp)" [class.selectedHero]="heroTemp === selectedHeroHMCP">
-            <span>{{heroTemp.id}}</span>
-            <span>{{heroTemp.name}}</span>
-        </li>
-    </div>
-</div>
-<div class='row'>
-    <div class="col-lg-4">
+<div class="row heroesMasterListRow">
+    <div class="col-lg-8">
+        <div id='heros-master-list'>
+            <ul>
+                <li *ngFor="let heroTemp of heroHMCP" (click)="onSelectHeroACM(heroTemp)" [class.selectedHero]="heroTemp === selectedHeroHMCP">
+                    <span>{{heroTemp.id}}</span>
+                    <span>{{heroTemp.name}}</span>
+                </li>
+            </ul>
+        </div>
+
         <div *ngIf='selectedHeroHMCP'>
             <div>
                 <h3>Selected Hero detail</h3>

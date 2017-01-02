@@ -1,3 +1,7 @@
 #heros-master-list li.selectedHero {
     background-color: #CFCFCF;
 }
+
+.heroesMasterListRow {
+    margin-top: 70px;
+}
