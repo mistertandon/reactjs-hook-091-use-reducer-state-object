@@ -1,6 +1,13 @@
 import {
-    Component
+    Component,
+    ViewChild,
+    ElementRef
 } from '@angular/core';
+
+import {
+    NgForm
+} from '@angular/forms'
+
 import {
     HeroFormClass
 } from './hero-form.class';
@@ -11,19 +18,43 @@ import {
 })
 export class HeroFormComponent {
 
+    @ViewChild('name') input: ElementRef;
+
     public powers: string[] = ['1 Star', '2 Star', '3 Star', '4 Star'];
 
     /**
-     *heroFM: Hero form module.
+     *heroFIO: Hero form module.
      */
-    public heroFM: HeroFormClass = new HeroFormClass(6, 'parvesh', this.powers[0], 'First attempt for angular forms.');
+    public heroFIO: HeroFormClass = new HeroFormClass(6, 'parvesh', this.powers[0], 'First attempt for angular forms.');
+
+    public isSubmitted: boolean = false;
 
     get formDebugger(): any {
 
-        return JSON.stringify(this.heroFM);
+        return JSON.stringify(this.heroFIO);
     }
 
     constructor() {}
 
+    ngAfterViewInit() {
 
+        console.log(this.input);
+    }
+
+    addNewHero() {
+
+    }
+    cancelSubmission(): void {
+
+        this.isSubmitted = false;
+    }
+
+    onSubmit(formControlsReference: NgForm) {
+
+        this.isSubmitted = true;
+        /*
+         *formControlsReference: From angular template we have passed NgForm directive reference using 'Temporary template variable'
+         */
+        console.log(formControlsReference);
+    }
 }
