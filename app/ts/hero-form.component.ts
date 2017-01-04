@@ -1,7 +1,7 @@
 import {
     Component,
     ViewChild,
-    ElementRef
+    AfterViewChecked
 } from '@angular/core';
 
 import {
@@ -9,7 +9,8 @@ import {
 } from '@angular/forms'
 
 import {
-    HeroFormClass
+    HeroFormClass,
+    HeroFormValidationIC
 } from './hero-form.class';
 
 @Component({
@@ -17,16 +18,27 @@ import {
     templateUrl: 'app/ts/hero-form.component.html',
     styleUrls: ['app/ts/hero-form.component.css']
 })
-export class HeroFormComponent {
+export class HeroFormComponent implements AfterViewChecked {
 
-    @ViewChild('name') input: ElementRef;
+    /*
+     *currentHeroAddFormTR			: Current heroAddForm template reference.
+     *currentHeroAddFormTR_REF	: Reference variable to "Current heroAddForm template reference".
+     *
+     */
+    public currentHeroAddFormTR_REF: NgForm;
+
+    @ViewChild('heroAddFormTR') currentHeroAddFormTR: NgForm;
 
     public powers: string[] = ['1 Star', '2 Star', '3 Star', '4 Star'];
 
-    /**
-     *heroFIO: Hero form module.
-     */
-    public heroFIO: HeroFormClass = new HeroFormClass(6, 'parvesh', this.powers[0], 'First attempt for angular forms.');
+    public heroFIO: HeroFormClass = new HeroFormClass(6, 'parvesh', this.powers[0], "First attempt for angular forms.");
+
+    public formErrors: any = {
+
+        name: "",
+        power: "",
+        comment: ""
+    };
 
     public isSubmitted: boolean = false;
 
@@ -35,27 +47,37 @@ export class HeroFormComponent {
         return JSON.stringify(this.heroFIO);
     }
 
-    constructor() {}
+    ngAfterViewChecked() {
 
-    ngAfterViewInit() {
+        this.onValueChangedHFCM();
+    }
+			
+		/**
+		 *Function used to call when user wants to reset "Hero Add" form explicitly by clicking on
+		 *<New Hero> buuton.
+		 *
+		 **/
+    resetNewHeroHFCM() {
 
-        console.log(this.input);
     }
 
-    addNewHero() {
-
-    }
-    cancelSubmission(): void {
+    cancelSubmittedFormHFCM(): void {
 
         this.isSubmitted = false;
     }
-
-    onSubmit(formControlsReference: NgForm) {
+			
+    onSubmitHFCM() {
 
         this.isSubmitted = true;
-        /*
-         *formControlsReference: From angular template we have passed NgForm directive reference using 'Temporary template variable'
-         */
-        console.log(formControlsReference);
+    }
+
+    onValueChangedHFCM(): any {
+
+        if (this.currentHeroAddFormTR === this.currentHeroAddFormTR_REF) {
+
+            return;
+        }
+        this.currentHeroAddFormTR = this.currentHeroAddFormTR_REF;
+
     }
 }

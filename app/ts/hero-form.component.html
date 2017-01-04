@@ -2,16 +2,15 @@
 
     <div [hidden]="isSubmitted" class='col-lg-6'>
         <h2>Add Hero Detail</h2>
-        <form name='heroAddForm' id='hero-add-form' #heroAddFormTR='ngForm' (ngSubmit)="onSubmit(heroAddFormTR)">
+        <form name='heroAddForm' id='hero-add-form' (ngSubmit)="onSubmitHFCM()" #heroAddFormTR="ngForm">
 
             <div class='form-group'>
 
                 <label for='name'>Name</label>
-                <input class='form-control' required name='name' [(ngModel)]="heroFIO.name" id='hero-form-name'
-                    minlength=4 maxlength=10 #name="ngModel" />
+                <input type="text" class='form-control' name='name' id='hero-form-name' required minlength=4
+                    maxlength=10 [(ngModel)]="heroFIO.name" #name="ngModel" />
 
-                <div *ngIf="name.errors && (name.touched || name.dirty)" class='alert alert-danger'
-                    role='alert'>
+                <div class='alert alert-danger' role='alert' *ngIf="name.errors && (name.touched || name.dirty)">
 
                     <div [hidden]="!name.errors.required">
                         Name is required.
@@ -31,16 +30,18 @@
                 <label for='hero-form-powers'>Power</label>
                 <select class='form-control' required name='power' [(ngModel)]="heroFIO.power"
                     name='power' id='hero-form-powers'>
-								<option *ngFor="let heroPower of powers" [value]="heroPower">
-									{{heroPower}}
-								</option>
-				</select>
+								<option *ngFor="let heroPower of powers" [value]="heroPower">{{heroPower}}</option>
+							</select>
             </div>
 
             <div class='form-group'>
                 <label for='comment'>Comment</label>
-                <input class='form-control' name='comment' [(ngModel)]="heroFIO.comment" id='hero-form-comment'
-                />
+                <input type="text" class='form-control' name='comment' id='hero-form-comment' required minlength=5
+                    maxlength=30 [(ngModel)]="heroFIO.comment" />
+
+                <div class="alert alert-danger" *ngIf="formErrors.comment">
+                    {{formErrors.comment}}
+                </div>
             </div>
 
             <button type="submit" [disabled]="!heroAddFormTR.form.valid" class='btn btn-primary'>Add Hero</button>
@@ -76,7 +77,7 @@
                 <button (click)='confirmSubmission()'>Confirm</button>
             </div>
             <div class="col-lg-3">
-                <button (click)='cancelSubmission()'>Cancel</button>
+                <button (click)='cancelSubmittedFormHFCM()'>Cancel</button>
             </div>
 
         </div>
