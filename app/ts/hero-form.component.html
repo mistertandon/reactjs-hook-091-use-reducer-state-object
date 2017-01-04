@@ -1,53 +1,84 @@
-<div [hidden]="isSubmitted" class='col-lg-6'>
-    <h2>Add Hero Detail</h2>
-    <form name='heroAddForm' id='hero-add-form' #heroAddFormTR='ngForm' (ngSubmit)="onSubmit(heroAddFormTR)">
-        <div class='form-group'>
-            <label for='name'>Name</label>
-            <input class='form-control' required name='name' [(ngModel)]="heroFIO.name" id='hero-form-name'
-                #name="ngModel" />
-            <div [hidden]="name.pristine || name.valid" class='alert alert-danger' role='alert'>
-                Name is required
+<div class="row heroFormMarginTop">
+
+    <div [hidden]="isSubmitted" class='col-lg-6'>
+        <h2>Add Hero Detail</h2>
+        <form name='heroAddForm' id='hero-add-form' #heroAddFormTR='ngForm' (ngSubmit)="onSubmit(heroAddFormTR)">
+
+            <div class='form-group'>
+
+                <label for='name'>Name</label>
+                <input class='form-control' required name='name' [(ngModel)]="heroFIO.name" id='hero-form-name'
+                    minlength=4 maxlength=10 #name="ngModel" />
+
+                <div *ngIf="name.errors && (name.touched || name.dirty)" class='alert alert-danger'
+                    role='alert'>
+
+                    <div [hidden]="!name.errors.required">
+                        Name is required.
+                    </div>
+                    <div [hidden]="!name.errors.minlength">
+                        Name must be atleast 4 characters long.
+                    </div>
+                    <div [hidden]="!name.errors.maxlength">
+                        Name maximum characters must not greater then 10 chararcters.
+                    </div>
+
+                </div>
+
             </div>
-        </div>
-        <div class='form-group'>
-            <label for='hero-form-powers'>Power</label>
-            <select class='form-control' required name='power' [(ngModel)]="heroFIO.power"
-                name='power' id='hero-form-powers'>
+
+            <div class='form-group'>
+                <label for='hero-form-powers'>Power</label>
+                <select class='form-control' required name='power' [(ngModel)]="heroFIO.power"
+                    name='power' id='hero-form-powers'>
 								<option *ngFor="let heroPower of powers" [value]="heroPower">
 									{{heroPower}}
 								</option>
 				</select>
-        </div>
-        <div class='form-group'>
-            <label for='comment'>Comment</label>
-            <input class='form-control' name='comment' [(ngModel)]="heroFIO.comment" id='hero-form-comment'
-            />
+            </div>
+
+            <div class='form-group'>
+                <label for='comment'>Comment</label>
+                <input class='form-control' name='comment' [(ngModel)]="heroFIO.comment" id='hero-form-comment'
+                />
+            </div>
+
+            <button type="submit" [disabled]="!heroAddFormTR.form.valid" class='btn btn-primary'>Add Hero</button>
+        </form>
+
+        <div>{{formDebugger}}</div>
+    </div>
+</div>
+
+<div class="row heroFormMarginTop">
+
+    <div [hidden]="!isSubmitted" class='col-lg-6'>
+        <h2>Confirmed submitted Hero Detail</h2>
+
+        <div class="row">
+            <div class="col-lg-3">Hero Name</div>
+            <div class="col-lg-3">{{heroFIO.name}}</div>
         </div>
 
-        <button type="submit" [disabled]="!heroAddFormTR.form.valid" class='btn btn-primary'>Add Hero</button>
-    </form>
-    <div>{{formDebugger}}</div>
-</div>
-<div [hidden]="!isSubmitted" class='col-lg-6'>
-    <h2>Confirmed submitted Hero Detail</h2>
-    <div class="row">
-        <div class="col-lg-3">Hero Name</div>
-        <div class="col-lg-3">{{heroFIO.name}}</div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Hero Power</div>
-        <div class="col-lg-3">{{heroFIO.power}}</div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Hero Comment</div>
-        <div class="col-lg-3">{{heroFIO.comment}}</div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">
-            <button (click)='confirmSubmission()'>Confirm</button>
+        <div class="row">
+            <div class="col-lg-3">Hero Power</div>
+            <div class="col-lg-3">{{heroFIO.power}}</div>
         </div>
-        <div class="col-lg-3">
-            <button (click)='cancelSubmission()'>Cancel</button>
+
+        <div class="row">
+            <div class="col-lg-3">Hero Comment</div>
+            <div class="col-lg-3">{{heroFIO.comment}}</div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <button (click)='confirmSubmission()'>Confirm</button>
+            </div>
+            <div class="col-lg-3">
+                <button (click)='cancelSubmission()'>Cancel</button>
+            </div>
+
         </div>
     </div>
 </div>

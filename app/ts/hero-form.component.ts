@@ -14,7 +14,8 @@ import {
 
 @Component({
     selector: 'hero-form',
-    templateUrl: 'app/ts/hero-form.component.html'
+    templateUrl: 'app/ts/hero-form.component.html',
+    styleUrls: ['app/ts/hero-form.component.css']
 })
 export class HeroFormComponent {
 

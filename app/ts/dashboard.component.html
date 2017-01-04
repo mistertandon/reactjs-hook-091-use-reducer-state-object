@@ -1,6 +1,6 @@
-<div id='dashboard-view-container' class='row'>
+<div id='dashboard-view-container' class='row dashboardConMarginTop'>
     <h3>Dashbord View</h3>
-    <div class='col-lg-1' *ngFor="let dashboardHero of dashboardHeroesDCP">
+    <div class='col-lg-2 dashboardHeroBlock' *ngFor="let dashboardHero of dashboardHeroesDCP">
 
         <span>{{dashboardHero.id}}</span>
         <a [routerLink]="['/herodetail', dashboardHero.id]">{{dashboardHero.name}}</a>
