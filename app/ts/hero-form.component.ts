@@ -31,13 +31,26 @@ export class HeroFormComponent implements AfterViewChecked {
 
     public powers: string[] = ['1 Star', '2 Star', '3 Star', '4 Star'];
 
-    public heroFIO: HeroFormClass = new HeroFormClass(6, 'parvesh', this.powers[0], "First attempt for angular forms.");
+    public heroFIO: HeroFormClass = new HeroFormClass(6, 'parvesh', this.powers[0], "Musculuos Hero.");
 
-    public formErrors: any = {
+    public formErrorsObj: Object;
 
-        name: "",
+    public formValidationFields: any = {
+
         power: "",
         comment: ""
+    };
+
+    public formValidationFieldsMessage: any = {
+        power: {
+            'required': 'Enter Hero power.',
+        },
+
+        comment: {
+            'required': 'Provide comments for Hero.',
+            'minlength': 'Provided comments must be atleast 5 characters long.',
+            'maxlength': 'Provided comments must not be greater then 10 characters long.'
+        }
     };
 
     public isSubmitted: boolean = false;
@@ -49,14 +62,14 @@ export class HeroFormComponent implements AfterViewChecked {
 
     ngAfterViewChecked() {
 
-        this.onValueChangedHFCM();
+        this.checkFormFieldsValidationHFCM();
     }
-			
-		/**
-		 *Function used to call when user wants to reset "Hero Add" form explicitly by clicking on
-		 *<New Hero> buuton.
-		 *
-		 **/
+
+    /**
+     *Function used to call when user wants to reset "Hero Add" form explicitly by clicking on
+     *<New Hero> buuton.
+     *
+     **/
     resetNewHeroHFCM() {
 
     }
@@ -65,19 +78,50 @@ export class HeroFormComponent implements AfterViewChecked {
 
         this.isSubmitted = false;
     }
-			
+
     onSubmitHFCM() {
 
         this.isSubmitted = true;
     }
 
-    onValueChangedHFCM(): any {
+    checkFormFieldsValidationHFCM(): void {
 
-        if (this.currentHeroAddFormTR === this.currentHeroAddFormTR_REF) {
+        if (!this.currentHeroAddFormTR) {
 
             return;
         }
-        this.currentHeroAddFormTR = this.currentHeroAddFormTR_REF;
 
+        this.currentHeroAddFormTR_REF = this.currentHeroAddFormTR;
+
+        this.currentHeroAddFormTR_REF.valueChanges.
+        subscribe(
+
+            (subscribedData) => {
+
+                this.accumulateFormFieldsValidationMessagesHFCM(subscribedData);
+            }
+        );
     }
+
+    accumulateFormFieldsValidationMessagesHFCM(subscribedData: any): void {
+
+        const formRef: any = this.currentHeroAddFormTR_REF.form;
+
+        for (const fieldsName in this.formValidationFields) {
+
+            let fieldControl = formRef.get(fieldsName);
+
+            this.formValidationFields[fieldsName] = "";
+
+            if (fieldControl && fieldControl.errors && fieldControl.invalid) {
+
+                for (const validationRuleName in fieldControl.errors) {
+
+                    this.formValidationFields[fieldsName] += this.formValidationFieldsMessage[fieldsName][validationRuleName]
+                }
+
+            }
+        }
+    }
+
 }

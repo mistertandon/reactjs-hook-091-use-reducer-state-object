@@ -39,8 +39,8 @@
                 <input type="text" class='form-control' name='comment' id='hero-form-comment' required minlength=5
                     maxlength=30 [(ngModel)]="heroFIO.comment" />
 
-                <div class="alert alert-danger" *ngIf="formErrors.comment">
-                    {{formErrors.comment}}
+                <div class="alert alert-danger" *ngIf="formValidationFields.comment">
+                    {{formValidationFields.comment}}
                 </div>
             </div>
 
