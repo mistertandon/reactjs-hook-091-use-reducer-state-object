@@ -5,7 +5,7 @@ export class HeroFormClass {
 
 export interface HeroFormValidationIC {
 
-    name: string;
-		power: string;
-		comment: string;
+    name?: string;
+		power?: string;
+		comment?: string;
 }

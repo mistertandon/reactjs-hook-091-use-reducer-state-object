@@ -23,19 +23,29 @@ import {
     HeroFormComponent
 } from './hero-form.component';
 
+import {
+    HeroFormReactiveComponent
+} from './hero-form-reactive/hero-form-reactive.component';
+
 const ROUTES_CONF: Routes = [{
-    path: 'heros',
-    component: HerosMasterComponent
-}, {
-    path: 'dashboardheroes',
-    component: DashboardComponent
-}, {
-    path: 'herodetail/:id',
-    component: HeroDetailComponent
-}, {
-    path: 'addhero',
-    component: HeroFormComponent
-}];
+        path: 'heros',
+        component: HerosMasterComponent
+    }, {
+        path: 'dashboardheroes',
+        component: DashboardComponent
+    }, {
+        path: 'herodetail/:id',
+        component: HeroDetailComponent
+    }, {
+        path: 'addhero',
+        component: HeroFormComponent
+    }, {
+        path: 'addheroreactive',
+        component: HeroFormReactiveComponent
+    }
+
+];
+
 
 @NgModule({
     imports: [RouterModule.forRoot(ROUTES_CONF)],

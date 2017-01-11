@@ -38,18 +38,27 @@ import {
     HeroFormComponent
 } from './hero-form.component';
 
+import {
+    HeroFormReactiveComponent
+} from './hero-form-reactive/hero-form-reactive.component';
+
+import {
+    HeroFormReactiveModule
+} from './hero-form-reactive/hero-form-reactive.module';
+
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HeroFormReactiveModule
     ],
     declarations: [
         AppComponent,
         HerosMasterComponent,
         HeroDetailComponent,
         DashboardComponent,
-        HeroFormComponent
+        HeroFormComponent,
     ],
     bootstrap: [AppComponent],
     providers: [HeroService]

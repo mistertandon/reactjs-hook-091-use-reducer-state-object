@@ -35,7 +35,7 @@ export class HeroFormComponent implements AfterViewChecked {
 
     public formErrorsObj: Object;
 
-    public formValidationFields: any = {
+    public formValidationFields: HeroFormValidationIC = {
 
         power: "",
         comment: ""
