@@ -1,6 +1,5 @@
 import {
-    NgModule,
-    Component,
+Component,
     OnInit
 } from '@angular/core';
 

@@ -39,19 +39,20 @@ import {
 } from './hero-form.component';
 
 import {
-    HeroFormReactiveComponent
-} from './hero-form-reactive/hero-form-reactive.component';
-
-import {
     HeroFormReactiveModule
 } from './hero-form-reactive/hero-form-reactive.module';
+
+import {
+    DynamicHeroFormModule
+} from './dynamic-hero-form/dynamic-hero-form.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        HeroFormReactiveModule
+        HeroFormReactiveModule,
+				DynamicHeroFormModule
     ],
     declarations: [
         AppComponent,

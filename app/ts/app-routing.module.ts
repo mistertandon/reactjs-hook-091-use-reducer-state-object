@@ -27,6 +27,10 @@ import {
     HeroFormReactiveComponent
 } from './hero-form-reactive/hero-form-reactive.component';
 
+import {
+    DynamicHeroFormComponent
+} from './dynamic-hero-form/dynamic-hero-form.component';
+
 const ROUTES_CONF: Routes = [{
         path: 'heros',
         component: HerosMasterComponent
@@ -42,10 +46,12 @@ const ROUTES_CONF: Routes = [{
     }, {
         path: 'addheroreactive',
         component: HeroFormReactiveComponent
+    }, {
+        path: 'addherodynamic',
+        component: DynamicHeroFormComponent
     }
 
 ];
-
 
 @NgModule({
     imports: [RouterModule.forRoot(ROUTES_CONF)],
