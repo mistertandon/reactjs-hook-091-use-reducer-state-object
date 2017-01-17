@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+
+    <label [attr.for]="questionObj.key">{{questionObj.label}}</label>
+    <div [ngSwitch]="questionObj.controlType">
+
+        <input [type]="questionObj.key" id="questionObj.key" [value]="questionObj.value"
+            [formControlName]="questionObj.key" *ngSwitchCase="'text'">
+
+        <select id="questionObj.key" [formControlName]="questionObj.key" *ngSwitchCase="'select'">
+					<option *ngFor="let selectOption of questionObj.selectOptions" [value]="selectOption.key">
+					{{selectOption.value}}
+					</option>
+				</select>
+    </div>
+    <div class="alert alert-danger" *ngIf="!isValid">
+        {{questionObj.label}} is required.
+    </div>
+</div>

@@ -1,1 +1,16 @@
-<h3>Hello from dynamic form.</h3>
+<div class="row">
+    <div class="col-lg-6">
+        <h3>Dynamic hero form</h3>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+            <div *ngFor="let question of questionsArr" class="form-row">
+                <dynamic-question [questionObj]="question" [form]="form">
+                </dynamic-question>
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
