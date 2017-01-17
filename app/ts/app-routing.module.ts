@@ -31,6 +31,10 @@ import {
     DynamicHeroFormComponent
 } from './dynamic-hero-form/dynamic-hero-form.component';
 
+import {
+    HighlightDirectiveComponent
+} from './highlight-directive-demo/highlight-directive.component';
+
 const ROUTES_CONF: Routes = [{
         path: 'heros',
         component: HerosMasterComponent
@@ -49,8 +53,10 @@ const ROUTES_CONF: Routes = [{
     }, {
         path: 'addherodynamic',
         component: DynamicHeroFormComponent
-    }
-
+    }, {
+        path: 'highlightdirective',
+        component: HighlightDirectiveComponent
+    } 
 ];
 
 @NgModule({
