@@ -1,0 +1,9 @@
+.highlightDiv {
+    min-height: 300px;
+    width: 300px;
+    margin: 0px auto;
+    border: 2px groove grey;
+    margin-top: 81px;
+    text-align: center;
+    padding-top: 140px;
+}

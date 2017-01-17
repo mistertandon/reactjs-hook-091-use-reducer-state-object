@@ -46,13 +46,18 @@ import {
     DynamicHeroFormModule
 } from './dynamic-hero-form/dynamic-hero-form.module';
 
+import {
+    HighlightDirectiveModule
+} from './highlight-directive-demo/highlight-directive.module';
+
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
         HeroFormReactiveModule,
-				DynamicHeroFormModule
+        DynamicHeroFormModule,
+        HighlightDirectiveModule
     ],
     declarations: [
         AppComponent,
