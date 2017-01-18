@@ -1,6 +1,7 @@
 import {
     Directive,
     ElementRef,
+    HostListener,
     Input
 } from '@angular/core';
 
@@ -9,8 +10,22 @@ import {
 })
 export class HighLightDirective {
 
-    constructor(HtmlElementRef: ElementRef) {
+    constructor(private HtmlElementRef: ElementRef) {
 
-        HtmlElementRef.nativeElement.style.backgroundColor = "yellow";
+    }
+
+    @HostListener("mouseenter") OnMouseEnter() {
+
+        this.highLightHDM('BurlyWood');
+    }
+
+    @HostListener("mouseleave") OnMouseLeave() {
+
+        this.highLightHDM('DarkKhaki');
+    }
+
+    private highLightHDM(colorName: string): void {
+
+        this.HtmlElementRef.nativeElement.style.backgroundColor = colorName;
     }
 }
